@@ -1,9 +1,18 @@
 body {
   font-family: "Segoe UI", Arial, sans-serif;
+<<<<<<< HEAD
   background-color: #f0f2ff;
   color: #333;
   display: flex;             
   flex-direction: column;     
+=======
+  /* background-color: #f0f2ff; */
+  color: #333;
+  display: flex;             
+  flex-direction: column;  
+  background-color: red;
+  background-image: conic-gradient(red, yellow, green, blue, black);
+>>>>>>> 94af749b8b2adb5dcf20baed0a3fc2c138a54a28
   min-height: 100%;          
   margin: 0;
 }
