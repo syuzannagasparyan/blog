@@ -142,8 +142,12 @@ function mergeObjects(obj1, obj2) {
 }
 console.log("24:", mergeObjects({a: 1}, {b: 2}));
 
-
 function getEntries(obj) {
   return Object.entries(obj);
 }
 console.log("25:", getEntries({x: 10, y: 20}));
+
+
+
+
+
