@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="index10.css">
 </head>
 <body>
-    <form action="" method="POST">
+    <form action="formsubmit.php" method="POST">
     <label>Անուն (First Name)</label><br>
         <input type="text" name="first_name" required><br><br>
     <label>Ազգանուն (Last Name)</label><br>
@@ -15,9 +15,9 @@
     <label>Էլ. փոստ (Email)</label><br>
         <input type="email" name="email" required><br><br>
     <label>Գաղտնաբառ (Password)</label><br>
-        <input type="password" name="password" required><br><br>
+        <input type="password" name="password"><br><br>
     <label>Գաղտնաբառի հաստատում</label><br>
-        <input type="password" name="confirm_password" required><br><br>
+        <input type="password" name="confirm_password"><br><br>
     <label>Օգտանուն (Username)</label><br>
         <input type="text" name="username"><br><br>
     <label>Հեռախոսահամար</label><br>
