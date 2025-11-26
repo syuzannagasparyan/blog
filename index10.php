@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="index10.css">
 </head>
 <body>
-    <form action="formsubmit.php" method="POST">
+    <form  method="POST" action="formsubmit.php" enctype="multipart/form-data">
     <label>Անուն (First Name)</label><br>
         <input type="text" name="first_name" required><br><br>
     <label>Ազգանուն (Last Name)</label><br>
@@ -30,11 +30,18 @@
     <label>Հասցե</label><br>
         <textarea name="address" rows="4"></textarea><br><br>
         <button type="submit">Գրանցվել</button>
+    <label> Ֆայլ </label><br>
+        <input type="file" name="file" id="photo"><br>
 </form>
-</body>
-</html>
 <?php
- 
+ session_start();
+ if(isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
+    foreach ($_SESSION['errors']as $errors) {
+        echo "<p style='color:red;'>{$errors}</p>";
+    }
+} elseif (isset($_SESSION['success'])) {
+    echo "<p style='color:green;'>{$_SESSION['success']}</p>";
+}
 ?>
 </body>
 </html>  
