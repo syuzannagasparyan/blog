@@ -42,6 +42,23 @@
 } elseif (isset($_SESSION['success'])) {
     echo "<p style='color:green;'>{$_SESSION['success']}</p>";
 }
+
+if(isset($_SESSION['errors'])) {
+    foreach($_SESSION['errors'] as $error) {
+        echo "<p style='color:red;'>$error</p>";
+    }
+    unset($_SESSION['errors']);
+}
+
+if(isset($_SESSION['success'])) {
+    echo "<p style='color:green;'>{$_SESSION['success']}</p>";
+    if(isset($_SESSION['uploaded_file'])) {
+        $uploadedFile = $_SESSION['uploaded_file'];
+        echo "<p>Վերբեռնված նկարն այստեղ է:</p>";
+        echo "<img src='images/$uploadedFile' alt='Uploaded Image' style='max-width:300px;'>";
+        unset($_SESSION['uploaded_file']);
+    }
+}
 ?>
 </body>
 </html>  

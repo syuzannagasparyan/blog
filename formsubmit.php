@@ -60,4 +60,37 @@
 // header("Location: index10.php");
 // exit();
 var_dump($_FILES);
+session_start();
+$errors = [];
+if(isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+    $fileTmpPath = $_FILES['file']['tmp_name'];
+    $fileName = $_FILES['file']['name'];
+    $fileSize = $_FILES['file']['size'];
+    $fileType = $_FILES['file']['type'];
+$maxSize = 5 * 1024 * 1024; 
+    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    if($fileSize > $maxSize) {
+        $errors[] = "Նկարի չափը չի կարող գերազանցել 5 ՄԲ";
+    } elseif(!in_array($fileType, $allowedTypes)) {
+        $errors[] = "Թույլատրելի ֆորմատները՝ JPG, PNG, GIF";
+    } else {
+        $newFileName = uniqid() . '_' . $fileName;
+        $destPath = __DIR__ . '/images/' . $newFileName;
+        if(!move_uploaded_file($fileTmpPath, $destPath)) {
+            $errors[] = "Նկարը չի կարող պահպանվել";
+        } else {
+            $_SESSION['uploaded_file'] = $newFileName; 
+        }
+    }
+} else {
+    $errors[] = "Նկարը վերբեռնված չէ կամ սխալ է";
+}
+if(!empty($errors)) {
+    $_SESSION['errors'] = $errors;
+    header("Location: index10.php");
+    exit();
+}
+$_SESSION['success'] = "Նկարի պահպանումը հաջողությամբ կատարվեց!";
+header("Location: index10.php");
+exit();
 ?>
