@@ -61,6 +61,7 @@ if ($password === '' || $confirm === '') {
 } elseif ($password !== $confirm) {
    $errors[] = "Գաղտնաբառերը չեն համընկնում";
 } 
+$hashedPassword = hash('sha256', $password); 
 $phone = trim($_POST['phone'] ?? '');
 if ($phone === '') {
     $errors[] = "Հեռախոսահամարը դատարկ է";
@@ -128,7 +129,7 @@ $maxSize = 5 * 1024 * 1024;
 if(empty($_SESSION['errors'])) {
     $sqlInsert = "INSERT INTO user(firstname,lastname,email,password,username,phone,birthdate,gender,addres)
         VALUES('". $_POST['first_name']."','".$_POST['last_name']."','". $_POST['email']."',
-               '". $_POST['password']."','".$_POST['username']."','".$_POST['phone']."',
+               '". $hashedPassword."','".$_POST['username']."','".$_POST['phone']."',
                '".$_POST['birthdate']."','".$_POST['gender']."','".$_POST['address']."'
                )";
     if($conn->query($sqlInsert) === TRUE ) {

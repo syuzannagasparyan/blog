@@ -33,6 +33,9 @@
     <label> Ֆայլ </label><br>
         <input type="file" name="file" id="photo"><br>
 </form>
+<p>Ներկայիս օգտատերը չունի հաշիվ? <a href="login.php">Մուտք</a></p>
+<p>Եթե արդեն գրանցված եք  <a href="login.php">Մուտք</a></p>
+
 <?php
  session_start();
  if(isset($_SESSION['errors']) && !empty($_SESSION['errors'])) {
@@ -59,6 +62,7 @@ if(isset($_SESSION['success'])) {
         unset($_SESSION['uploaded_file']);
     }
 }
+
 ?>
 </body>
 </html>  
